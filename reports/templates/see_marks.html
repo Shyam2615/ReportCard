@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block start %}
+
+
+<div class="container card mt-5 shadow-lg">
+  <div class="d-flex" style="justify-content: space-between;">
+    <h2 class="my-1">Student Report</h2>
+    <h4 class="my-3">Date: {{rank.first.date_of_report}}</h4>
+  </div>
+    <hr>
+    <div class="d-flex" style="justify-content: space-between;">
+      <div class="d-flex flex-column" >
+        <h4>Id : {{rank.first.student.student_id}}</h4>
+        <h4>Rank : {{rank.first.student_rank}}</h4>
+        <h4>Total : {{total.total_marks}}</h4>
+      </div>
+      <div class="d-flex flex-column">
+        <h4>Name : {{rank.first.student.student_name}}</h4>
+        <h4>Department : {{rank.first.student.department}}</h4>
+        <h4>Age : {{rank.first.student.student_age}}</h4>
+      </div>
+    </div>
+    
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Subjects</th>
+        <th scope="col">Marks</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for student in queryset %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{student.subject.subject_name}}</td>
+        <td>{{student.marks}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
